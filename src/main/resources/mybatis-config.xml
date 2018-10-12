@@ -1,0 +1,56 @@
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false"/>
+	</settings>
+	<!-- 属性定义
+	加载一个properties文件
+	在 properties标签 中配置属性值
+	 -->
+	<!--<properties resource="database.properties">-->
+		<!--&lt;!&ndash; <property name="" value=""/> &ndash;&gt;-->
+	<!--</properties>-->
+
+	<!-- 定义 别名 -->
+	<typeAliases>
+		<!--
+		单个别名的定义
+		alias：别名，type：别名映射的类型  -->
+		<!-- <typeAlias type="cn.itcast.mybatis.po.User" alias="user"/> -->
+		<!-- 批量别名定义
+		指定包路径，自动扫描包下边的pojo，定义别名，别名默认为类名（首字母小写或大写）
+		 -->
+		<package name="org.slsale.pojo"/>
+
+	</typeAliases>
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- config params as the following -->
+			<!--<!–分页参数合理化  –>-->
+			<property name="reasonable" value="true"/>
+		</plugin>
+	</plugins>
+
+	<!-- 和spring整合后 environments配置将废除-->
+	<!--<environments default="development">-->
+		<!--<environment id="development">-->
+		<!--&lt;!&ndash; 使用jdbc事务管理&ndash;&gt;-->
+			<!--<transactionManager type="JDBC" />-->
+		<!--&lt;!&ndash; 数据库连接池&ndash;&gt;-->
+			<!--<dataSource type="POOLED">-->
+				<!--<property name="driver" value="${driver}"/>-->
+				<!--<property name="url" value="${url}"/>-->
+				<!--<property name="username" value="${user}"/>-->
+				<!--<property name="password" value="${password}"/>-->
+			<!--</dataSource>-->
+		<!--</environment>-->
+	<!--</environments>-->
+
+	<!--加载mapper映射
+	如果将和spring整合后，可以使用整合包中提供的mapper扫描器，此处的mappers不用配置了。
+	 -->
+
+	
+</configuration>
